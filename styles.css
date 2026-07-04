@@ -38,7 +38,10 @@ body {
     radial-gradient(circle at 75% 10%, rgba(155, 103, 245, .18), transparent 30%),
     linear-gradient(180deg, #11101e 0%, #151021 48%, #11101e 100%);
   color: var(--text);
+  overflow-x: hidden;
 }
+
+img { max-width: 100%; }
 
 button,
 textarea { font: inherit; }
@@ -752,28 +755,74 @@ textarea:focus { border-color: var(--accent); }
   .workspace { grid-template-columns: 230px minmax(0, 1fr); }
   .history-panel { grid-column: 1 / -1; }
   .hero-section { grid-template-columns: 1fr; }
-  .screenshot-stack { justify-self: start; }
+  .screenshot-stack { justify-self: center; }
+  .screens-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 760px) {
   .marketing-nav {
     align-items: flex-start;
     flex-direction: column;
+    padding: 14px 16px 8px;
+  }
+  .marketing-nav nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
   }
   .hero-section {
     min-height: auto;
+    gap: 26px;
+    padding-left: 16px;
+    padding-right: 16px;
     padding-top: 12px;
     padding-bottom: 34px;
   }
-  .hero-copy h1 { font-size: 64px; }
+  .hero-copy h1 {
+    max-width: 9ch;
+    font-size: clamp(48px, 15vw, 64px);
+  }
+  .hero-text {
+    margin-top: 18px;
+    font-size: 17px;
+  }
+  .hero-actions,
+  .store-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .primary-link,
+  .secondary-link,
+  .store-badge {
+    width: 100%;
+  }
   .screenshot-stack {
     width: min(100%, 430px);
-    min-height: 590px;
+    min-height: 570px;
     justify-self: center;
   }
-  .side-shot { width: 46%; }
-  .top-shot { right: -16px; }
-  .bottom-shot { left: -16px; }
+  .main-shot { width: 74%; }
+  .side-shot { width: 44%; }
+  .top-shot {
+    top: 38px;
+    right: 0;
+  }
+  .bottom-shot {
+    left: 0;
+    bottom: 10px;
+  }
+  .content-band,
+  .modes-section,
+  .steps-band,
+  .safety-section,
+  .screens-section {
+    padding: 46px 16px;
+  }
+  .section-heading h2,
+  .safety-section h2 {
+    font-size: clamp(30px, 10vw, 42px);
+    line-height: 1.05;
+  }
   .feature-grid,
   .mode-grid,
   .steps,
@@ -794,4 +843,31 @@ textarea:focus { border-color: var(--accent); }
 @media (max-width: 430px) {
   .mode-list { grid-template-columns: 1fr; }
   .topbar h1 { font-size: 30px; }
+  .brand-logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+  }
+  .brand-block strong { font-size: 17px; }
+  .brand-block small { font-size: 12px; }
+  .marketing-nav nav a { font-size: 14px; }
+  .hero-section { padding-bottom: 24px; }
+  .hero-copy h1 { font-size: clamp(44px, 14vw, 56px); }
+  .screenshot-stack {
+    min-height: 520px;
+  }
+  .main-shot { width: 78%; }
+  .side-shot { width: 45%; }
+  .top-shot {
+    top: 32px;
+    right: -4px;
+  }
+  .bottom-shot {
+    left: -4px;
+    bottom: 18px;
+  }
+  .site-footer {
+    padding: 16px;
+    text-align: center;
+  }
 }
